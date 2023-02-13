@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.SqlTypes;
 
 namespace TP_INTEGRADOR_P1
 {
@@ -13,7 +14,7 @@ namespace TP_INTEGRADOR_P1
         {
 
             Usuario usuario = new Usuario();
-            using (SqlConnection conn = new SqlConnection())
+            using (SqlConnection conn = new SqlConnection(cadenaConexion))
             {
 
                 SqlCommand comando = new SqlCommand($"SELECT * FROM Usuario WHERE Id='{id}' ", conn);
@@ -37,7 +38,7 @@ namespace TP_INTEGRADOR_P1
         public static Usuario iniciarSesion(string usuario, string clave)
         {
             Usuario usuario = new Usuario();
-            using (SqlConnection conn = new SqlConnection())
+            using (SqlConnection conn = new SqlConnection(cadenaConexion))
             {
 
                 SqlCommand comando = new SqlCommand($"SELECT * FROM Usuario WHERE NombreUsuario='{usuario}' AND contraseña ='{clave}' ", conn);
