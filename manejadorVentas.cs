@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.SqlTypes;
+
 
 namespace TP_INTEGRADOR_P1
 {
@@ -12,7 +14,7 @@ namespace TP_INTEGRADOR_P1
         public List<Venta> obtenerVentas(int idUsuario)
         {
             List<Venta> ventas = new List<Venta>();
-            using (SqlConnection conn = new SqlConnection())
+            using (SqlConnection conn = new SqlConnection(cadenaConexion))
             {
                 SqlCommand comando = new SqlCommand($"select * from Ventas where IdUsuario = '{idUsuario}'", conn);
                 conn.Open();
