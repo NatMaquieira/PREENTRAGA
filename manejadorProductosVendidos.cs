@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.SqlTypes;
 
 namespace TP_INTEGRADOR_P1
 {
@@ -12,7 +13,7 @@ namespace TP_INTEGRADOR_P1
         public List<Producto> obtenerProductosVendidos(int idUsuario)
         {
             List<Producto> productos = new List<Producto>();
-            using (SqlConnection conn = new SqlConnection())
+            using (SqlConnection conn = new SqlConnection(cadenaConexion))
             {
                 SqlCommand comando = new SqlCommand($"select Producto.Id, Producto.Descripciones, Producto.Costo, Producto.PrecioVenta, Producto.Stock, Producto.IdUsuario from ProductoVendido left join Producto on IdProducto = Producto.Id where IdUsuario = '{idUsuario}'", conn);
                 conn.Open();
