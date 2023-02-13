@@ -14,7 +14,7 @@ namespace TP_INTEGRADOR_P1
         public List<Producto> obtenerProducto(int idUsuario)
         {
             List<Producto> productos = new List<Producto>();
-            using (SqlConnection conn = new SqlConnection())
+            using (SqlConnection conn = new SqlConnection(cadenaConexion))
             {
                 SqlCommand comando = new SqlCommand($"SELECT * FROM Producto where IdUsuario = '{idUsuario}'", conn);
                 conn.Open();
